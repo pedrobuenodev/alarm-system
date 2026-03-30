@@ -1,4 +1,4 @@
-# Sistema de Alarmes
+# Sistema de Alarmes Grupo Assist (Stack)
 
 Sistema web para cadastro e manipulação de alarmes relacionados a equipamentos industriais.
 
