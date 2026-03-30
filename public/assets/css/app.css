@@ -1,0 +1,73 @@
+/* =============================================
+   Alarm System – Global Styles
+   ============================================= */
+
+:root {
+    --sidebar-bg: #1a1d23;
+    --body-bg:    #f0f2f5;
+}
+
+body {
+    background-color: var(--body-bg);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar-brand {
+    letter-spacing: .5px;
+    font-size: 1.1rem;
+}
+
+/* Cards */
+.card {
+    border-radius: .75rem;
+}
+
+.icon-box {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tables */
+.table thead th {
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .3px;
+}
+
+.table tbody tr {
+    transition: background .12s ease;
+}
+
+/* Badges */
+.status-badge {
+    font-size: .8rem;
+    padding: .35em .65em;
+}
+
+/* Footer */
+footer {
+    font-size: .82rem;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: .85rem;
+    }
+}
+
+/* Sort links hover */
+.table thead a:hover {
+    opacity: .75;
+}

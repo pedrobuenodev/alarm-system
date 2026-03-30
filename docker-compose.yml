@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: alarm_app
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - alarm_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: alarm_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - alarm_network
+
+  db:
+    image: mysql:8.0
+    container_name: alarm_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: alarm_system
+      MYSQL_USER: alarm_user
+      MYSQL_PASSWORD: alarm_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/migrations.sql:/docker-entrypoint-initdb.d/migrations.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - alarm_network
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: alarm_mail
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - alarm_network
+
+networks:
+  alarm_network:
+    driver: bridge
+
+volumes:
+  db_data:

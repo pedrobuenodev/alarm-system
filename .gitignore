@@ -1,0 +1,21 @@
+# Docker
+docker/mysql/
+
+# Dependências (caso use Composer futuramente)
+/vendor/
+
+# Variáveis de ambiente
+.env
+.env.local
+
+# Logs
+*.log
+/logs/
+
+# Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
