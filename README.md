@@ -1,4 +1,4 @@
-# Sistema de Alarmes Grupo Assist (Stack)
+# Sistema de Alarmes (Stack PHP)
 
 Sistema web para cadastro e manipulação de alarmes relacionados a equipamentos industriais.
 
